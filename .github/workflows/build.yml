@@ -1,0 +1,18 @@
+name: build
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    permissions:
+      packages: write
+    steps:
+      - name: uses actions/checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 #v4.1.6
+      - name: docker login
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: docker build
+        run: docker build -t ghcr.io/khorwood/certbot .
+      - name: docker push
+        run: docker push ghcr.io/khorwood/certbot:latest
