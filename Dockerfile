@@ -1,4 +1,4 @@
-FROM certbot/certbot@sha256:ddf9e5d226a56e886986838fa0ebedc0237511c78664352e8d0f4346ee022cd8
+FROM certbot/certbot:amd64-latest@sha256:835f40053d6621fa90acf4bccf84c4683f27ff5eae6b59dbe7ea6474093ce2c6
 
 COPY ./requirements.txt /tmp
 
